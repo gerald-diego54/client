@@ -1,0 +1,69 @@
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row">
+        <div class="row">
+            <div class="col">
+                <h2 *ngIf="Title == ''" style="padding-bottom: 30px; padding-top: 20px; color: #004A79">Create Expenses Records</h2>
+                <h2 *ngIf="Title != ''" style="padding-bottom: 30px; padding-top: 20px; color: #004A79">{{Title}}</h2>
+            </div>
+            <hr style="margin-left: 10px; margin-bottom: 30px;">
+            <div class="col">
+                <!-- <button pButton pRipple  style="margin: 20px 15px 40px 0; float: right;" type="button" icon="pi pi-user-plus" (click)="buttonSave()" class="p-button-rounded p-button-success p-button-outlined"></button> -->
+            </div>
+        </div>
+        <div class="col" style="padding: 0 0 0 60px;">
+            <div class="row">
+                <div class="col">
+                    <label for="floatingInput" class="fw-bold">Date</label><br>
+                    <p-inputMask mask="99/99/9999" [(ngModel)]="expenseModel.date" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+                </div>
+                <div class="col">
+                    <label for="floatingInput" class="fw-bold">Expenses</label><br>
+                    <input type="text" pInputText [(ngModel)]="expenseModel.expense_name" placeholder="Electricity e.g."/>
+                </div>
+                <div class="col">
+                    <label for="floatingInput" class="fw-bold">Amount</label><br>
+                    <p-inputNumber [(ngModel)]="expenseModel.expense_amount" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+                </div>
+                <div class="col"  style="margin: 20px 80px 0 0;">
+                    <button  pButton pRipple type="button" icon="pi pi-user-plus" style="margin: 0 0 0 0; width: 150px; float: left;" (click)="buttonSave()" class="btn btn-primary float-end">Add&nbsp;</button>
+                </div>
+            </div><br>
+        </div>
+    </div>
+    <div *ngIf="loading; else elseBlock" class="row">
+        <div class="col">
+            <div class="container" style="overflow-y: scroll; height: 38.5vh;">
+                <p-table [value]="dataSource" selectionMode="single" [(selection)]="selectedExpenses" dataKey="code" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="text-align: center;">Date</th>
+                            <th style="text-align: center;">Expenses</th>
+                            <th style="text-align: center;">Amount</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-dataSource>
+                        <tr>
+                            <td>{{dataSource.date}}</td>
+                            <td>{{dataSource.expense_name}}</td>
+                            <td>{{dataSource.expense_amount}}</td>
+                            <td style="text-align: center;"><button pButton pRipple type="button" (click)="buttonDelete(dataSource.id)" icon="pi pi-trash" label="Delete" class="p-button-outlined p-button-danger"></button></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ng-template #elseBlock><br><br>
+                <h5 class="text-center">Please wait...</h5><br>
+                <p-progressSpinner style="margin-left: 516px;"></p-progressSpinner>
+        </ng-template>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col"><br>
+            <button pButton pRipple  style="float: right;" type="button" (click)="buttonCancel()" label="Close" class=" p-button-danger"></button>
+        </div>
+    </div>
+</div>

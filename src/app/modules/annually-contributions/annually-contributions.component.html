@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col"  style="padding: 20px 50px 0 ">
+            <div class="container-fluid">
+                <span class="fs-4 fw-bold" style="color: #004A79;">Contributions Reports</span>
+                <p-breadcrumb [style]="{'width': '71vw', marginTop: '20px'}" [model]="items" [home]="home"></p-breadcrumb>
+            </div><br>
+            <div class="container">
+                <div class="card" style="padding: 0 0 0 70px;">
+                    <h5 class="text-center" style="margin-bottom: 50px; margin-top: 30px;">Monthly Contributions</h5>
+                    <p-chart type="line" style="width: 60vw; margin-bottom: 30px" [data]="basicData" [options]="basicOptions"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

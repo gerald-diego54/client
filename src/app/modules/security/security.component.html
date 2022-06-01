@@ -1,0 +1,26 @@
+<div class="container-fluid border border-bottom border-bottom" style="height: 10vh; padding: 12px;">
+   
+</div>
+<div class="container-fluid">
+    <div class="row" style="padding: 0;">
+        <div class="col-5"></div>
+        <div class="col" style="margin: 10vh 0 0 0;">
+            <p-card [style]="{width: '360px', padding: '0 20px 0 20px'}" styleClass="p-card-shadow">    
+                <ng-template pTemplate="header">
+                    <h2 class="fw-bold" style="text-align: center; height: 10vh; padding: 20px 0 0 0;">Sign-In</h2>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="Login.email">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                  <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="Login .password">
+                        <label for="floatingPassword">Password</label>
+                  </div><br>
+                  <button (click)="submit()" type="button" class="btn btn-primary btn-lg container">Login</button><br><br>
+                  <p class="text-center">Don't have an account? <a href="main/register" style="text-decoration: none;">Sign-up</a> here</p>
+                </ng-template>
+            </p-card>
+        </div>
+        <div class="col-5"></div>
+    </div>
+</div>

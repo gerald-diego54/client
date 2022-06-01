@@ -1,0 +1,62 @@
+<div class="row" style="overflow-x: hidden; color: #004A79;">
+    <div class="col" style="padding: 0 0 0 60px;">
+        <div class="row">
+            <div class="col">
+                <h2 *ngIf="Title == ''" style="padding-bottom: 30px; padding-top: 20px; color: #004A79">Create Finance Records</h2>
+                <h2 *ngIf="Title != ''" style="padding-bottom: 30px; padding-top: 20px; color: #004A79">{{Title}}</h2>
+            </div>
+        </div>
+        <hr style="margin-left: -30px; width: 1000px; position: relative; bottom: 20px">
+        <div class="row">
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Date</label><br>
+                <p-inputMask mask="99/99/9999" [(ngModel)]="financeRecords.date" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Net Salary</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.net_income" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">SSS Contribution</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.sss_contri" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">PhilHealth Contribution</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.philhealth_contri" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">PagIbig Contribution</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.pagibig_contri" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Debts</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.debts" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Savings</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.savings" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Emergency Funds</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.emergency_funds" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Daily Needs</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.needs" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+            <div class="col">
+                <label for="floatingInput" class="fw-bold">Education Finance</label><br>
+                <p-inputNumber [(ngModel)]="financeRecords.education_finance" inputId="currency-us" mode="currency" currency="PHP" locale="en-US"></p-inputNumber>
+            </div>
+        </div><br>
+        <hr style="margin-left: -30px; width: 1000px; position: relative;"><br>
+        <button type="button" style="margin: 0 120px 0 0; width: 100px; float: left;" (click)="buttonSave()" class="btn btn-success float-end">Save</button>
+        <button type="button" style="margin: 0 15px 0 0; width: 100px; float: left;" (click)="buttonCancel()" class="btn btn-danger float-end">Cancel</button>
+    </div>
+</div>

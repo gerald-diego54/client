@@ -1,0 +1,66 @@
+
+    <div class="row" style=" overflow: hidden; margin: 0;">
+        <div class="col">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-9" style="padding: 20px 90px 0 0">
+            <span class="fs-4 fw-bold" style="color: #004A79;">Monthly Record</span>
+            <p-breadcrumb [style]="{'width': '71vw', marginTop: '20px'}" [model]="items" [home]="home"></p-breadcrumb>
+            <div class="row" *ngIf="loading; else elseBlock">
+                <div class="col-1" style="padding: 30px 0 0 10px">
+                    <p-card [style]="{'width': '71vw', 'margin-bottom': '2em', 'height': '70vh'}">
+                        <ng-template pTemplate="header">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" style="margin: 15px 15px 0 0; background-color: #004A79;" (click)="promptToAddDialog()" class="btn float-end text-white">Add Income Records</button>
+                                    <button type="button" style="margin: 15px 5px 0 0;; background-color: #004A79;" (click)="promptToAddDialogDailyExpenses()" class="btn float-end text-white">Add Daily Expense</button>
+                                </div>
+                            </div><br>
+                            <div class="container" style="overflow-y: scroll; height: 55vh">
+                                <p-table [value]="dataSource" selectionMode="single" dataKey="code" responsiveLayout="scroll">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th style="text-align: center;">ID</th>
+                                            <th style="text-align: center;">Date</th>
+                                            <th style="text-align: center;">Net Income</th>
+                                            <th style="text-align: center;">Total Contributions</th>
+                                            <th style="text-align: center;">Total Expenses</th>
+                                            <th style="text-align: center;">Total Savings</th>
+                                            <th style="text-align: center;">Total Debts</th>
+                                            <th style="text-align: center;" colspan="2">Action</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-dataSource>
+                                        <tr>
+                                            <td>{{dataSource.id}}</td>
+                                            <td>{{dataSource.date}}</td>
+                                            <td>{{dataSource.net_income}}</td>
+                                            <td>{{dataSource.total_contributions}}</td>
+                                            <td>{{dataSource.total_expenses}}</td>
+                                            <td>{{dataSource.total_savings}}</td>
+                                            <td>{{dataSource.total_debts}}</td>
+                                            <td><button pButton pRipple type="button" icon="pi pi-user-edit" (click)="updateFinance(dataSource.id)" label="Edit" class="p-button-outlined p-button-primary"></button></td>
+                                            <td><button pButton pRipple type="button" icon="pi pi-trash" (click)="deleteFinance(dataSource.id)" label="Delete" class="p-button-outlined p-button-danger"></button></td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </ng-template>
+                    </p-card>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <ng-template #elseBlock>
+                    <p-dialog [showHeader]="false" [visible]="true" [modal]="true" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false" [closable]="false">
+                        <h5 class="text-center">Please wait...</h5><br>
+                        <p-progressSpinner style="margin-left: 320px;"></p-progressSpinner>
+                    </p-dialog>
+                </ng-template>
+            </div>
+            <div class="container">
+                <p-confirmDialog  [style]="{width: '30vw', height: '30vh'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
+                <!-- <p-confirmDialog header="Confirmation" width="425"></p-confirmDialog> -->
+                <p-toast></p-toast>
+            </div>
+        </div>
+    </div>
